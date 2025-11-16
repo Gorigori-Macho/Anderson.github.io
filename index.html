@@ -7,6 +7,7 @@
     <title>GorigoriMachoのポートフォリオ</title>
   </head>
   <body>
+    <div id="banana-container"></div>
     <h1>GorigoriMacho</h1>
       <img src="Firefly.png_1.png"　>
     
@@ -71,5 +72,24 @@
     </ul>
     <h3>Favorite Videos</h3>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/_Zy3ES-kbzE?si=6vs3RP-DM5wY04mA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <script>
+    function dropBanana() {
+      const banana = document.createElement("div");
+      banana.classList.add("banana");
+      banana.textContent = "🍌";
+
+      banana.style.left = Math.random() * 100 + "vw";
+      banana.style.animationDuration = Math.random() * 3 + 3 + "s";
+
+      document.getElementById("banana-container").appendChild(banana);
+
+      setTimeout(() => {
+        banana.remove();
+      }, 6000);
+    }
+
+    setInterval(dropBanana, 200);
+  </script>
+
   </body>
 </html>
