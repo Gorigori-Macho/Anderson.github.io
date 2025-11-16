@@ -72,24 +72,37 @@
     </ul>
     <h3>Favorite Videos</h3>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/_Zy3ES-kbzE?si=6vs3RP-DM5wY04mA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-  <script>
-    function dropBanana() {
-      const banana = document.createElement("div");
-      banana.classList.add("banana");
-      banana.textContent = "🍌";
+ function createBanana() {
+  const banana = document.createElement("div");
+  banana.classList.add("banana");
+  banana.textContent = "🍌";
 
-      banana.style.left = Math.random() * 100 + "vw";
-      banana.style.animationDuration = Math.random() * 3 + 3 + "s";
+  // ランダムサイズ
+  const size = Math.random() * 20 + 20; // 20px〜40px
+  banana.style.fontSize = size + "px";
 
-      document.getElementById("banana-container").appendChild(banana);
+  // ランダム初期位置
+  banana.style.left = Math.random() * 100 + "vw";
+  banana.style.top = Math.random() * 100 + "vh";
 
-      setTimeout(() => {
-        banana.remove();
-      }, 6000);
-    }
+  // ランダム揺れ幅
+  const xMove = (Math.random() - 0.5) * 100 + "px";
+  const yMove = (Math.random() - 0.5) * 100 + "px";
+  banana.style.setProperty("--x-move", xMove);
+  banana.style.setProperty("--y-move", yMove);
 
-    setInterval(dropBanana, 200);
-  </script>
+  // ランダム速度
+  const duration = Math.random() * 5 + 5; // 5〜10秒
+  banana.style.animationDuration = duration + "s";
+
+  document.getElementById("banana-container").appendChild(banana);
+
+  // しばらく経ったら削除
+  setTimeout(() => banana.remove(), duration * 1000);
+}
+
+// 一定間隔でバナナを作る
+setInterval(createBanana, 400);
 
   </body>
 </html>
