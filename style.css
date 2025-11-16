@@ -75,7 +75,6 @@ th, td {
   border: solid 1px #f0f0f0;
   padding: 0.5rem;
 }
-/* style.css の一番下に追加 */
 #banana-container {
   position: fixed;
   top: 0;
@@ -84,17 +83,27 @@ th, td {
   height: 100%;
   pointer-events: none;
   overflow: hidden;
+  z-index: -1; /* 背景として扱う */
 }
 
 .banana {
   position: absolute;
-  top: -50px;
+  bottom: -50px; /* 下から出現 */
   font-size: 30px;
-  animation: fall linear infinite;
+  animation: floatUp linear infinite;
+  opacity: 0.8; /* 少し透けると幻想的 */
 }
 
-@keyframes fall {
-  to {
-    transform: translateY(110vh) rotate(360deg);
+@keyframes floatUp {
+  0% {
+    transform: translateX(0) translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(var(--x-move)) translateY(-120vh) rotate(360deg);
+    opacity: 0;
   }
 }
