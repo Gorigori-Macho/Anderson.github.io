@@ -72,8 +72,9 @@
     </ul>
     <h3>Favorite Videos</h3>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/_Zy3ES-kbzE?si=6vs3RP-DM5wY04mA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
- <script>
-    function createBanana() {
+    
+   <script>
+function createBanana() {
   const banana = document.createElement("div");
   banana.classList.add("banana");
   banana.textContent = "🍌";
@@ -98,21 +99,22 @@
 
   document.getElementById("banana-container").appendChild(banana);
 
-  // しばらく経ったら削除
+  // バナナは寿命で消す
   setTimeout(() => banana.remove(), duration * 1000);
 }
 
-// 一定間隔でバナナを作る
+// バナナを定期生成
 setInterval(createBanana, 400);
-   // ハートを作る関数
+
+// ハートを作る関数
 function createHeart(x, y) {
   const heart = document.createElement("div");
   heart.classList.add("heart");
   heart.textContent = "❤️";
 
-  // クリック位置にハートを表示
-  heart.style.left = x + "px";
-  heart.style.top = y + "px";
+  // クリック位置にハートを表示（少し中央寄せ）
+  heart.style.left = (x - 10) + "px";
+  heart.style.top = (y - 10) + "px";
 
   document.body.appendChild(heart);
 
@@ -120,7 +122,7 @@ function createHeart(x, y) {
   setTimeout(() => heart.remove(), 1000);
 }
 
-// バナナをクリックしたときにハートを浮かせる
+// バナナをクリックしたらハートを浮かべる
 document.getElementById("banana-container").addEventListener("click", (e) => {
   if (e.target.classList.contains("banana")) {
     const rect = e.target.getBoundingClientRect();
@@ -129,7 +131,7 @@ document.getElementById("banana-container").addEventListener("click", (e) => {
     createHeart(x, y);
   }
 });
-
 </script>
+
   </body>
 </html>
