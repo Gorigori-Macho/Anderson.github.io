@@ -104,6 +104,32 @@
 
 // 一定間隔でバナナを作る
 setInterval(createBanana, 400);
+   // ハートを作る関数
+function createHeart(x, y) {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.textContent = "❤️";
+
+  // クリック位置にハートを表示
+  heart.style.left = x + "px";
+  heart.style.top = y + "px";
+
+  document.body.appendChild(heart);
+
+  // 1秒後に削除
+  setTimeout(() => heart.remove(), 1000);
+}
+
+// バナナをクリックしたときにハートを浮かせる
+document.getElementById("banana-container").addEventListener("click", (e) => {
+  if (e.target.classList.contains("banana")) {
+    const rect = e.target.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height / 2;
+    createHeart(x, y);
+  }
+});
+
 </script>
   </body>
 </html>
